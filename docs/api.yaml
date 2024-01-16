@@ -1,0 +1,43 @@
+openapi: 3.0.3
+info:
+  title: Library Service
+  description: Sample Service to explain caching concepts
+  contact:
+    email: andre.santos@fanduel.com
+  version: 1.0.0
+paths:
+  /library/books:
+    get:
+      summary: Fetches all the books in the library.
+      description: Fetches all the books in the library.
+      operationId: getLibraryBooks
+      responses:
+        '200':
+          description: Successfull operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Books'
+
+
+components:
+  schemas:
+    Books:
+      allOf:
+        - $ref: '#/components/schemas/Book'
+
+    Book:
+      type: object
+      properties:
+        isbn:
+          type: string
+          example: "978-3-16-148410-0"
+        title:
+          type: string
+          example: "Can't hurt me"
+        author:
+          type: string
+          example: "David Goggings"
+        genre:
+          type: string
+          example: "Biography"
